@@ -62,6 +62,26 @@ The experiment can be started with
     experimaestro run-experiment --run-mode normal full.yaml
 ```
 
+### experiments run mode
+
+when using `experimaestro run-experiment`, we can have three run options, `dry-run`,`generate` and `normal`. 
+
+#### dry-run
+
+`dry-run` is an option that can be used to show a list of the task that related to the experiment file, including their dependency. 
+Running with this option will NOT launch the corresponding task but will be quite useful to check the dependency between the task and
+the verifing the hyperparameters pass to each task is valid.
+
+#### generate
+
+`generate` is an option which could show **and generate** the python code that corresponding to each task to the experiment file. The python
+code will be generated at the experimaestro working directory, together with a `param.json` indicating the hyperparameters related to this task.
+This is an option that used for debug a single task: We can generate the python code first and then launching the single task with 
+```sh
+python ....
+``` 
+to debug without running other tasks. We note that the task could only ran if all the depended task are finished. 
+
 ### Other options
 
 The Python path can be set by the configuration file, and module be used instead
